@@ -56,7 +56,6 @@ const BurgerBtn = styled.button`
       width: 100%;
       height: 100%;
       display: block;
-      /* box-shadow: 0 0 8px rgba(0, 0, 0,0.1); */
     }
 
     > ul {
@@ -124,7 +123,6 @@ function Header() {
         </BurgerBtn>
       </HeaderCont>
       <Routes>
-        {/* 경로는 path로 컴포넌트는 element로 연결해 줍니다. */}
         <Route path="/pages/Products" element={<Products />} />
         <Route path="/pages/Bookmark" element={<Bookmark />} />
       </Routes>
