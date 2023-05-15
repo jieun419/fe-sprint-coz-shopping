@@ -1,8 +1,8 @@
-function Bookmark() {
+function Bookmark({MainCont}) {
   return (
-    <>
+    <MainCont>
       Bookmark
-    </>
+    </MainCont>
   )
 }
 

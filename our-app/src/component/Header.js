@@ -1,7 +1,5 @@
 import { AiOutlineMenu, AiOutlineGift, AiOutlineStar } from "react-icons/ai";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import Products from "../pages/Products";
-import Bookmark from "../pages/Bookmark";
+import { Link } from "react-router-dom";
 import logo from '../img/logo.svg'
 import styled from "styled-components"
 
@@ -11,7 +9,9 @@ const HeaderCont = styled.header`
   display: flex;
   justify-content: space-between;
   padding: 0 75px;
-  box-shadow: 0 8px 8px rgba(0, 0, 0,0.1);
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  z-index: 1;
 `;
 
 const Logo = styled.h1`
@@ -35,10 +35,10 @@ const BurgerBtn = styled.button`
     background-color: #fff;
     top: 75px;
     right: 38px;
-    border-radius: 20px;
     filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.1));
     display: none;
     cursor: auto;
+    border-radius: 20px;
 
     &::before{
       content: '';
@@ -60,12 +60,13 @@ const BurgerBtn = styled.button`
 
     > ul {
       position: relative;
+      border-radius: 20px;
 
       > li {
         display: flex;
         border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
-        padding: 15px 25px;
         font-size: 1rem;
+        overflow: hidden;
       }
 
       > li:hover{
@@ -76,6 +77,7 @@ const BurgerBtn = styled.button`
         display: flex;
         align-items: center;
         justify-content: center;
+        padding: 15px 25px;
       }
 
       > li:first-child:hover{ background-color: transparent }
@@ -88,6 +90,7 @@ const BurgerBtn = styled.button`
         display: flex;
         align-items: center;
         color: #000;
+        padding: 15px 25px;
       }
 
       > li > a > .icon {
@@ -100,10 +103,10 @@ const BurgerBtn = styled.button`
 
 function Header() {
   return (
-    <BrowserRouter>
+    <>
       <HeaderCont>
         <Link to="/">
-          <Logo><img src={logo} alt="logo"></img>Coz Shopping</Logo>
+          <Logo><img src={logo} alt="logo"/>Coz Shopping</Logo>
         </Link>
         <BurgerBtn>
           <AiOutlineMenu />
@@ -122,11 +125,7 @@ function Header() {
           </nav>
         </BurgerBtn>
       </HeaderCont>
-      <Routes>
-        <Route path="/pages/Products" element={<Products />} />
-        <Route path="/pages/Bookmark" element={<Bookmark />} />
-      </Routes>
-    </BrowserRouter>
+    </>
   )
 }
 
