@@ -1,8 +1,8 @@
-function Products({MainCont}) {
+function Products({ Container, productItem }) {
   return (
-    <MainCont>
+    <Container>
       Products
-    </MainCont>
+    </Container>
   )
 }
 

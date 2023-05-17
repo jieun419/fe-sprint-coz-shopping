@@ -1,4 +1,3 @@
-import styled from "styled-components"
 import { useState } from "react"
 import CardItem from "../component/CardItem"
 import { Article } from "../styled/mainStyle"
