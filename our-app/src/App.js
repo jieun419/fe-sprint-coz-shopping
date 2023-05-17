@@ -12,14 +12,30 @@ import pruductData from "./api/pruductData"
 
 function App() {
   const [productItem, setProductItem] = useState([])
-  const [dataCount, setDataCount] = useState(4)
+  const [isBookMark, setIsBookMark] = useState(false)
+  const [dataState, setDataState] = useState([])
+  
+  const BOOKMARK = "BOOKMARK"
+
+  const storedData = JSON.parse(localStorage.getItem(BOOKMARK));
+
+  const handleBookmarkToggle = (item) => {
+    if (dataState.includes(item) || storedData.includes(item)) {
+      const filterData = dataState.filter(el => el.id !== item.id)
+      setDataState([...filterData])
+      localStorage.setItem(BOOKMARK, JSON.stringify([...filterData]))
+    } else {
+      setDataState([item, ...storedData])
+      localStorage.setItem(BOOKMARK, JSON.stringify([item, ...storedData]))
+    }
+  }
 
   useEffect(() => {
-    pruductData(dataCount)
+    pruductData()
       .then((data) => {
         setProductItem(data)
       })
-  }, [dataCount])
+  }, [])
 
   return (
     <>
@@ -27,14 +43,38 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Main Container={Container} productItem={productItem} dataCount={4} />}
+          element={
+            <Main
+              Container={Container}
+              productItem={productItem}
+              handleBookmarkToggle={handleBookmarkToggle}
+              isBookMark={isBookMark}
+              dataState={dataState}
+              storedData={storedData}
+            />}
         />
         <Route
-          path="/pages/Products"
-          element={<Products Container={Container} productItem={productItem} dataCount={20} />} />
+          path="/Products/list"
+          element={
+            <Products
+              Container={Container}
+              productItem={productItem}
+              handleBookmarkToggle={handleBookmarkToggle}
+              isBookMark={isBookMark}
+              dataState={dataState}
+              storedData={storedData}
+            />} />
         <Route
-          path="/pages/Bookmark"
-          element={<Bookmark Container={Container} productItem={productItem} dataCount={20} />} />
+          path="/Bookmark"
+          element={
+            <Bookmark
+              Container={Container}
+              productItem={productItem}
+              handleBookmarkToggle={handleBookmarkToggle}
+              isBookMark={isBookMark}
+              dataState={dataState}
+              storedData={storedData}
+            />} />
       </Routes>
       <Footer />
     </>
