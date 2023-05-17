@@ -18,8 +18,8 @@ function Main({ MainCont, productItem }) {
       setDataState(filterData)
       localStorage.setItem(BOOKMARK, JSON.stringify(filterData))
     } else {
-      setDataState([...dataState, item])
-      localStorage.setItem(BOOKMARK, JSON.stringify([...dataState, item]))
+      setDataState([item, ...storedData])
+      localStorage.setItem(BOOKMARK, JSON.stringify([item, ...storedData]))
     }
     console.log(isBookMark)
   }
