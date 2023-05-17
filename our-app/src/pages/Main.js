@@ -26,7 +26,7 @@ function Main({ Container, productItem }) {
     <Container>
       <h2>상품 리스트</h2>
       <Article>
-        {productItem.map((el) => {
+        {productItem.slice(0,4).map((el) => {
           return (
             <CardItem
               key={el.id}
@@ -41,8 +41,8 @@ function Main({ Container, productItem }) {
       </Article>
       <h2>북마크 리스트</h2>
       <Article>
-
-        {storedData && storedData.map((el) => {
+        
+        {storedData && storedData.slice(0,4).map((el) => {
           return (
             <CardItem
               key={el.id}
@@ -55,6 +55,7 @@ function Main({ Container, productItem }) {
         })}
 
       </Article>
+
     </Container>
 
   );
