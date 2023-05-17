@@ -1,24 +1,41 @@
 import './App.css';
 import { Routes, Route } from "react-router-dom";
+import { useEffect, useState } from "react"
+import { MainCont } from "./styled/commonStyle"
+
 import Header from './component/Header';
 import Footer from './component/Footer';
 import Products from "./pages/Products";
 import Bookmark from "./pages/Bookmark";
 import Main from "./pages/Main";
-import styled from "styled-components"
-
-const MainCont = styled.main`
-  padding: 0 75px;
-`
+import pruductData from "./api/pruductData"
 
 function App() {
+  const [productItem, setProductItem] = useState([])
+  const [dataCount, setDataCount] = useState(4)
+  // const [bookmarked, setBookmarked] = useState([])
+
+  useEffect(() => {
+    pruductData(dataCount)
+      .then((data) => {
+        setProductItem(data)
+      })
+  }, [dataCount])
+
   return (
     <>
       <Header />
       <Routes>
-        <Route path="/" element={<Main MainCont={MainCont} />} />
-        <Route path="/pages/Products" element={<Products MainCont={MainCont} />} />
-        <Route path="/pages/Bookmark" element={<Bookmark MainCont={MainCont} />} />
+        <Route
+          path="/"
+          element={<Main MainCont={MainCont} productItem={productItem} dataCount={4} />}
+        />
+        <Route
+          path="/pages/Products"
+          element={<Products MainCont={MainCont} productItem={productItem} dataCount={20} />} />
+        <Route
+          path="/pages/Bookmark"
+          element={<Bookmark MainCont={MainCont} productItem={productItem} dataCount={20} />} />
       </Routes>
       <Footer />
     </>

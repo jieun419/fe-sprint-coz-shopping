@@ -1,47 +1,9 @@
-import styled from "styled-components"
 import Modal from "./Modal";
 import BookMark from "./Bookmark"
-import { useEffect, useState } from "react"
+import { useState } from "react"
+import { Section, BookMarkBtn, TextBox } from "../styled/cardItemStyle";
 
-
-const Section = styled.section`
- flex: 1;
-  >.img-box {
-    position: relative;
-    height: 0;
-    padding-bottom: 90%;
-    border-radius: 12px;
-    overflow: hidden;
-    cursor: pointer;
-  }
-  >.img-box img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-`
-const TextBox = styled.div`
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  margin-top: 5px;
-
-  >.left-area, .right-area{
-    display: flex;
-    flex-direction: column;
-    font-size: 1rem;
-  }
-  >.right-area{
-    align-items: flex-end;
-
-    >strong.product{
-    color: #452CDD
-    }
-  }
-`
-
-function CardItem({ dummyData }) {
+function CardItem({ handleBookmarkToggle, isBookMark, productItem }) {
   const [isModal, setIsModal] = useState(false)
 
   const showModal = () => {
@@ -63,36 +25,49 @@ function CardItem({ dummyData }) {
 
 
   return (
-    <Section>
-      {/* <Modal dummyData={dummyData} /> */}
-      {isModal ? <Modal dummyData={dummyData} showModal={showModal}/> : null}
+    <Section key={productItem.id} id={productItem.id}>
+      {isModal
+        ? <Modal
+          productItem={productItem}
+          showModal={showModal}
+          handleBookmarkToggle={handleBookmarkToggle}
+          isBookMark={isBookMark} />
+        : null
+      }
 
       <div className="img-box">
         <img onClick={showModal}
-          src={dummyData.type === "Brand" ? dummyData.brand_image_url : dummyData.image_url}
-          alt={dummyData.type === "Brand" ? dummyData.brand_name : dummyData.title}
+          src={productItem.type === "Brand" ? productItem.brand_image_url : productItem.image_url}
+          alt={productItem.type === "Brand" ? productItem.brand_name : productItem.title}
         />
-        <BookMark />
+        <BookMarkBtn>
+          <BookMark
+            productItem={productItem}
+            handleBookmarkToggle={handleBookmarkToggle}
+            isBookMark={isBookMark} />
+        </BookMarkBtn>
       </div>
 
       <TextBox>
         <div className="left-area">
-          <strong>{dummyData.type === "Brand" ? dummyData.brand_name : dummyData.title}</strong>
-          <span>{dummyData.sub_title}</span>
+          <strong>{productItem.type === "Brand" ? productItem.brand_name : productItem.title}</strong>
+          <span>{productItem.sub_title}</span>
         </div>
 
         <div className="right-area">
           {/* Category, Exhibition */}
-          {!dummyData.discountPercentage && null}
+          {!productItem.discountPercentage && null}
           {/* Brand */}
-          {dummyData.type !== "Brand" || <strong>관심고객수</strong>}
+          {productItem.type !== "Brand" || <strong>관심고객수</strong>}
           {/* Product*/}
-          {dummyData.type !== "Product" || <strong className="product">{`${dummyData.discountPercentage}%`}</strong>}
-          <span>{!dummyData.price ? numComma(dummyData.follower) : `${numComma(dummyData.price)}원`}</span>
+          {productItem.type !== "Product" || <strong className="product">{`${productItem.discountPercentage}%`}</strong>}
+          <span>{!productItem.price ? numComma(productItem.follower) : `${numComma(productItem.price)}원`}</span>
         </div>
       </TextBox>
     </Section>
   );
 }
+
+
 
 export default CardItem;
