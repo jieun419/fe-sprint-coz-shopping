@@ -1,8 +1,8 @@
-function Products() {
+function Products({MainCont}) {
   return (
-    <>
+    <MainCont>
       Products
-    </>
+    </MainCont>
   )
 }
 
