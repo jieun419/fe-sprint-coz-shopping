@@ -14,14 +14,15 @@ function Main({ Container, productItem }) {
   const handleBookmarkToggle = (item) => {
     if (dataState.includes(item) || storedData.includes(item)) {
       const filterData = dataState.filter(el => el.id !== item.id)
-      setDataState(filterData)
-      localStorage.setItem(BOOKMARK, JSON.stringify(filterData))
+      setDataState([...filterData])
+      localStorage.setItem(BOOKMARK, JSON.stringify([...filterData]))
     } else {
+      // setDataState([item, ...storedData])
       setDataState([item, ...storedData])
       localStorage.setItem(BOOKMARK, JSON.stringify([item, ...storedData]))
     }
-    console.log(isBookMark)
   }
+
   return (
     <Container>
       <h2>상품 리스트</h2>
@@ -32,7 +33,7 @@ function Main({ Container, productItem }) {
               key={el.id}
               productItem={el}
               handleBookmarkToggle={() => { handleBookmarkToggle(el) }}
-              isBookMark={isBookMark}
+              isBookMark={storedData.some(item => item.id === el.id)}
               dataState={dataState}
             />
           );
