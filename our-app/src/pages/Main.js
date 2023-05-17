@@ -3,8 +3,7 @@ import { useState } from "react"
 import CardItem from "../component/CardItem"
 import { Article } from "../styled/mainStyle"
 
-
-function Main({ MainCont, productItem }) {
+function Main({ Container, productItem }) {
 
   const [isBookMark, setIsBookMark] = useState(false)
   const [dataState, setDataState] = useState([])
@@ -24,8 +23,7 @@ function Main({ MainCont, productItem }) {
     console.log(isBookMark)
   }
   return (
-    <MainCont>
-
+    <Container>
       <h2>상품 리스트</h2>
       <Article>
         {productItem.map((el) => {
@@ -57,8 +55,7 @@ function Main({ MainCont, productItem }) {
         })}
 
       </Article>
-
-    </MainCont>
+    </Container>
 
   );
 }

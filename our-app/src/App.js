@@ -1,7 +1,7 @@
 import './App.css';
 import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react"
-import { MainCont } from "./styled/commonStyle"
+import { Container } from "./styled/commonStyle"
 
 import Header from './component/Header';
 import Footer from './component/Footer';
@@ -28,14 +28,14 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Main MainCont={MainCont} productItem={productItem} dataCount={4} />}
+          element={<Main Container={Container} productItem={productItem} dataCount={4} />}
         />
         <Route
           path="/pages/Products"
-          element={<Products MainCont={MainCont} productItem={productItem} dataCount={20} />} />
+          element={<Products Container={Container} productItem={productItem} dataCount={20} />} />
         <Route
           path="/pages/Bookmark"
-          element={<Bookmark MainCont={MainCont} productItem={productItem} dataCount={20} />} />
+          element={<Bookmark Container={Container} productItem={productItem} dataCount={20} />} />
       </Routes>
       <Footer />
     </>
