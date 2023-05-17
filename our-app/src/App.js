@@ -13,7 +13,6 @@ import pruductData from "./api/pruductData"
 function App() {
   const [productItem, setProductItem] = useState([])
   const [dataCount, setDataCount] = useState(4)
-  // const [bookmarked, setBookmarked] = useState([])
 
   useEffect(() => {
     pruductData(dataCount)
