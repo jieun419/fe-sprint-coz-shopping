@@ -17,7 +17,6 @@ function Main({ Container, productItem }) {
       setDataState([...filterData])
       localStorage.setItem(BOOKMARK, JSON.stringify([...filterData]))
     } else {
-      // setDataState([item, ...storedData])
       setDataState([item, ...storedData])
       localStorage.setItem(BOOKMARK, JSON.stringify([item, ...storedData]))
     }
