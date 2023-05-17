@@ -1,5 +1,5 @@
 import { AiOutlineClose } from "react-icons/ai";
-import BookMark from "./Bookmark"
+import BookMark from "./BookmarkBtn"
 import { ModalCont, ModalBg, ModalBox, CloseBtn, TextBox } from "../styled/modalStyle"
 
 function Modal({ productItem, showModal }) {

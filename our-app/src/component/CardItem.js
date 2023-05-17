@@ -1,7 +1,7 @@
 import Modal from "./Modal";
-import BookMark from "./Bookmark"
+import BookMarkBtn from "./BookmarkBtn"
 import { useState } from "react"
-import { Section, BookMarkBtn, TextBox } from "../styled/cardItemStyle";
+import { Section, BookMarkContain, TextBox } from "../styled/cardItemStyle";
 
 function CardItem({ handleBookmarkToggle, isBookMark, productItem }) {
   const [isModal, setIsModal] = useState(false)
@@ -40,12 +40,12 @@ function CardItem({ handleBookmarkToggle, isBookMark, productItem }) {
           src={productItem.type === "Brand" ? productItem.brand_image_url : productItem.image_url}
           alt={productItem.type === "Brand" ? productItem.brand_name : productItem.title}
         />
-        <BookMarkBtn>
-          <BookMark
+        <BookMarkContain>
+          <BookMarkBtn
             productItem={productItem}
             handleBookmarkToggle={handleBookmarkToggle}
             isBookMark={isBookMark} />
-        </BookMarkBtn>
+        </BookMarkContain>
       </div>
 
       <TextBox>

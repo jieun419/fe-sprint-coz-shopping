@@ -1,7 +1,7 @@
 import { AiFillStar } from "react-icons/ai";
-import {BookmarkBtn} from "../styled/bookmarkBtnStyle"
+import { BookmarkBtn } from "../styled/bookmarkBtnStyle"
 
-function BookMark({ handleBookmarkToggle, isBookMark }) {
+function BookMarkBtn({ handleBookmarkToggle, isBookMark }) {
   return (
     <BookmarkBtn onClick={handleBookmarkToggle}>
       {!isBookMark
@@ -12,4 +12,4 @@ function BookMark({ handleBookmarkToggle, isBookMark }) {
   );
 }
 
-export default BookMark;
+export default BookMarkBtn;

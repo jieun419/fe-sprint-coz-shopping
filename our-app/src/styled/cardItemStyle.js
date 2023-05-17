@@ -17,7 +17,7 @@ export const Section = styled.section`
     object-fit: cover;
   }
 `
-export const BookMarkBtn = styled.div`
+export const BookMarkContain = styled.div`
   position: absolute;
   right: 5px;
   bottom: 10px;
