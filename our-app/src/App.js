@@ -11,8 +11,6 @@ import Bookmark from "./pages/Bookmark";
 import Main from "./pages/Main";
 import pruductData from "./api/pruductData"
 
-const BOOKMARK = "BOOKMARK"
-const storedData = JSON.parse(localStorage.getItem(BOOKMARK));
 
 function App() {
   const [productItem, setProductItem] = useState([])
@@ -21,7 +19,10 @@ function App() {
   const [isTapmenu, setIsTapmenu] = useState(0)
   const [isFilterType, setIsFilterItem] = useState('')
   const [filterItem, setFilterItem] = useState(productItem)
-  const [filterStoredItem, setFilterStoredItem] = useState(storedData)
+  const [filterStoredItem, setFilterStoredItem] = useState()
+
+  const BOOKMARK = "BOOKMARK"
+  const storedData = JSON.parse(localStorage.getItem(BOOKMARK));
 
   const handleFilter = (idx, type) => {
     setIsTapmenu(idx);
@@ -44,7 +45,7 @@ function App() {
   useEffect(() => {
     if (filterItem.length === 0) {
       setFilterItem(productItem)
-    }else if(storedData.length === 0){
+    } else if (storedData.length === 0) {
       setFilterStoredItem(storedData)
     }
     let filteredItem = productItem.filter((el) => tabContArr[isTapmenu].type === el.type);

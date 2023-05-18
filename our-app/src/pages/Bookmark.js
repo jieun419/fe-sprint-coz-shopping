@@ -2,9 +2,11 @@ import { Article } from "../styled/mainStyle"
 import TabList from "../component/TabList"
 import CardItem from "../component/CardItem"
 import { TabListCont } from "../styled/filterTablistStyle"
+import { useEffect, useState } from "react"
 
-function Bookmark({ handleFilter, filterItem, isTapmenu, tabContArr, Container, productItem, handleBookmarkToggle, dataState, storedData }) {
-  return (
+function Bookmark({ setFilterItem, handleFilter, filterItem, isTapmenu, tabContArr, Container, productItem, handleBookmarkToggle, dataState, storedData }) {
+
+ return (
     <Container>
       <TabListCont>
         {tabContArr.map((el, idx) => (
