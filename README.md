@@ -19,12 +19,14 @@ Redux 좀 더 공부하고 리팩토링할 예정입니다.
 상품, 북마크 상품이 총 4개씩 보여지고 있습니다.
 
 #### 북마크 상품이 없을 경우의 화면입니다.
-![스크린샷 2023-05-18 오후 3 39 35](https://github.com/jieun419/fe-sprint-coz-shopping/assets/109754988/c72a5a76-19dd-474d-9fb9-ef9be27a8676)
+![스크린샷 2023-05-18 오후 4 02 03](https://github.com/jieun419/fe-sprint-coz-shopping/assets/109754988/b1a47178-8a6b-4c05-95c7-24f0befbf86e)
+
 #### 북마크 상품을 추가했을 경우입니다.
-![스크린샷 2023-05-18 오후 3 39 44](https://github.com/jieun419/fe-sprint-coz-shopping/assets/109754988/1dfbc414-6f9f-44e1-8078-608186b50fbf)
+![스크린샷 2023-05-18 오후 4 01 52](https://github.com/jieun419/fe-sprint-coz-shopping/assets/109754988/c8cb8e8f-fb28-4a71-9eba-a1c41bdc5e3d)
 
 #### 상단 로고, 메뉴로 페이지 이동이 가능합니다.
-![스크린샷 2023-05-18 오후 3 40 11](https://github.com/jieun419/fe-sprint-coz-shopping/assets/109754988/7b9ac21c-7c31-4330-8006-20861a14f2c1)
+![스크린샷 2023-05-18 오후 4 02 36](https://github.com/jieun419/fe-sprint-coz-shopping/assets/109754988/8fc6181c-10e3-461f-96aa-0e9f2774a762)
+
 1. 로고
 - 클릭 시 메인 페이지로 이동합니다.
 2. 햄버거 메뉴
@@ -32,8 +34,8 @@ Redux 좀 더 공부하고 리팩토링할 예정입니다.
 - [북마크 리스트 페이지] 클릭 시 상품 리스트 페이지로 이동합니다.
 
 #### 각 상품 이미지 클릭 시 모달창이 나옵니다.
-![스크린샷 2023-05-18 오후 3 43 56](https://github.com/jieun419/fe-sprint-coz-shopping/assets/109754988/da9a287f-49d5-4263-8d76-06d722abf3b6)
-![스크린샷 2023-05-18 오후 3 44 07](https://github.com/jieun419/fe-sprint-coz-shopping/assets/109754988/fe05a1d7-cb29-46f4-8d29-e714f8da1f83)
+![스크린샷 2023-05-18 오후 4 04 02](https://github.com/jieun419/fe-sprint-coz-shopping/assets/109754988/b196d6ab-7038-415d-9e09-a7a9a09f76a1)
+![스크린샷 2023-05-18 오후 4 04 11](https://github.com/jieun419/fe-sprint-coz-shopping/assets/109754988/553b634c-b6ee-42a1-a7ad-3973c9047245)
 - 하단 좌측의 북마크 버튼으로도 북마크 상품을 추가/삭제할 수 있습니다.
 
 ---
@@ -43,8 +45,8 @@ Redux 좀 더 공부하고 리팩토링할 예정입니다.
 상단에 탭메뉴가 있어 원하는 타입별로 확인이 가능합니다.
 
 #### 상품을 타입별로 확인이 가능합니다.
-![스크린샷 2023-05-18 오후 3 44 51](https://github.com/jieun419/fe-sprint-coz-shopping/assets/109754988/94b2deb7-b55d-4465-a1fa-789af9fe43ff)
-![스크린샷 2023-05-18 오후 3 45 02](https://github.com/jieun419/fe-sprint-coz-shopping/assets/109754988/c8f148b1-972a-4cf4-ade8-7e66dd3961c3)
+![스크린샷 2023-05-18 오후 4 05 35](https://github.com/jieun419/fe-sprint-coz-shopping/assets/109754988/9738b70d-eb5b-4fd0-b939-2e912bc1b41a)
+![스크린샷 2023-05-18 오후 4 06 06](https://github.com/jieun419/fe-sprint-coz-shopping/assets/109754988/d68c5a6e-aad7-4a9d-a275-776566981faf)
 - 상단 탭 메뉴로 원하는 타입별로 확인이 가능합니다.
 - 북마크 상품도 같이 노출 됩니다.
 
@@ -53,7 +55,8 @@ Redux 좀 더 공부하고 리팩토링할 예정입니다.
 ## - 북마크 리스트 페이지
 상품 하단에 위치한 별모양 버튼 클릭 시 북마크 리스트에 추가 됩니다.
 상품 리스트 페이지와 동일하게 타입별로 확인이 가능합니다.
-![스크린샷 2023-05-18 오후 3 47 15](https://github.com/jieun419/fe-sprint-coz-shopping/assets/109754988/512fb2eb-d47e-4417-93bd-d5aaffc9e3cb)
+
+![스크린샷 2023-05-18 오후 4 07 23](https://github.com/jieun419/fe-sprint-coz-shopping/assets/109754988/d78cd67c-0690-4908-b9f0-e5a7baed0b5d)
 - 북마크 상품만 추가 됩니다.
 - 북마크 버튼 클릭 시 해당 페이지에서 삭제 됩니다.
 - 상단 탭 메뉴로 원하는 타입별로 확인이 가능합니다.
