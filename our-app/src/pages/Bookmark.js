@@ -2,11 +2,13 @@ import { Article } from "../styled/mainStyle"
 import TabList from "../component/TabList"
 import CardItem from "../component/CardItem"
 import { TabListCont } from "../styled/filterTablistStyle"
+import Notfound from "../component/NotBookmark"
 import { useEffect, useState } from "react"
 
-function Bookmark({ setFilterItem, handleFilter, filterItem, isTapmenu, tabContArr, Container, productItem, handleBookmarkToggle, dataState, storedData }) {
 
- return (
+function Bookmark({ filterStoredItem, handleFilter, filterItem, isTapmenu, tabContArr, Container, productItem, handleBookmarkToggle, dataState, storedData }) {
+
+  return (
     <Container>
       <TabListCont>
         {tabContArr.map((el, idx) => (
@@ -15,19 +17,13 @@ function Bookmark({ setFilterItem, handleFilter, filterItem, isTapmenu, tabContA
       </TabListCont>
 
       <Article>
-        {
-          isTapmenu !== 0
-            ? filterItem.map((el) => (
-              <CardItem
-                key={el.id}
-                productItem={el}
-                handleBookmarkToggle={() => { handleBookmarkToggle(el) }}
-                isBookMark={storedData.some(item => item.id === el.id)}
-                dataState={dataState}
-              />
-            ))
-            : storedData.map((el) => {
-              return (
+        {storedData.length === 0
+          ? (
+            <Notfound />
+            )
+          : (
+            isTapmenu !== 0 ? (
+              filterStoredItem.map((el) => (
                 <CardItem
                   key={el.id}
                   productItem={el}
@@ -35,9 +31,20 @@ function Bookmark({ setFilterItem, handleFilter, filterItem, isTapmenu, tabContA
                   isBookMark={storedData.some(item => item.id === el.id)}
                   dataState={dataState}
                 />
-              );
-            })
-        }
+              ))
+            ) : (
+              storedData.map((el) => (
+                <CardItem
+                  key={el.id}
+                  productItem={el}
+                  handleBookmarkToggle={() => { handleBookmarkToggle(el) }}
+                  isBookMark={storedData.some(item => item.id === el.id)}
+                  dataState={dataState}
+                />
+              ))
+            )
+          )}
+
       </Article>
     </Container>
   )

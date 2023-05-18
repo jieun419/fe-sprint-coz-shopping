@@ -23,7 +23,7 @@ function App() {
 
   const BOOKMARK = "BOOKMARK"
   const storedData = JSON.parse(localStorage.getItem(BOOKMARK));
-
+  
   const handleFilter = (idx, type) => {
     setIsTapmenu(idx);
     setIsFilterItem(type);
