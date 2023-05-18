@@ -5,5 +5,6 @@ width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 24px 0;
+  margin: 0 0 24px 0;
+  gap: 15px;
 `
