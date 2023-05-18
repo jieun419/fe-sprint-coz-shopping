@@ -51,7 +51,7 @@ function App() {
     let filteredItem = productItem.filter((el) => tabContArr[isTapmenu].type === el.type);
     let filterStoredItem = storedData.filter((el) => tabContArr[isTapmenu].type === el.type);
     setFilterItem([...filteredItem]);
-    setFilterItem([...filterStoredItem]);
+    setFilterStoredItem([...filterStoredItem]);
   }, [isTapmenu]);
 
   useEffect(() => {
@@ -106,6 +106,7 @@ function App() {
               handleFilter={handleFilter}
               filterItem={filterItem}
               isTapmenu={isTapmenu}
+              filterStoredItem={filterStoredItem}
             />} />
       </Routes>
       <Footer />

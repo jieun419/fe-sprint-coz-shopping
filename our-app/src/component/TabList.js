@@ -1,26 +1,15 @@
-import styled from 'styled-components';
+import { TabBtn, Imgbox } from "../styled/tabMenuStyle"
 
-function TabList({ tabContArr, handleFilter, id }) {
+function TabList({ tabContArr, handleFilter, id, isTapmenu }) {
   return (
-      <TabBtn onClick={() => handleFilter(id, tabContArr.type)}>
-        <Imgbox src={tabContArr.src} />
-        {tabContArr.name}
-      </TabBtn>
+    <TabBtn className={tabContArr.id === isTapmenu ? "active" : null} tabtype={tabContArr.type} onClick={() => handleFilter(id, tabContArr.type)}>
+      <Imgbox src={tabContArr.src} />
+      <span>{tabContArr.name}</span>
+    </TabBtn>
   )
 }
 
-const TabBtn = styled.button`
-  position: relative;
-  font-size: 1.2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`
 
-const Imgbox = styled.img`
-  margin-bottom: 5px;
-`
 
 
 export default TabList
