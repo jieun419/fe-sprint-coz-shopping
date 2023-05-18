@@ -1,25 +1,7 @@
-import { useState } from "react"
 import CardItem from "../component/CardItem"
 import { Article } from "../styled/mainStyle"
 
-function Main({ Container, productItem }) {
-
-  const [isBookMark, setIsBookMark] = useState(false)
-  const [dataState, setDataState] = useState([])
-  const BOOKMARK = "BOOKMARK"
-
-  const storedData = JSON.parse(localStorage.getItem(BOOKMARK));
-
-  const handleBookmarkToggle = (item) => {
-    if (dataState.includes(item) || storedData.includes(item)) {
-      const filterData = dataState.filter(el => el.id !== item.id)
-      setDataState([...filterData])
-      localStorage.setItem(BOOKMARK, JSON.stringify([...filterData]))
-    } else {
-      setDataState([item, ...storedData])
-      localStorage.setItem(BOOKMARK, JSON.stringify([item, ...storedData]))
-    }
-  }
+function Main({ Container, productItem, handleBookmarkToggle, isBookMark, dataState, storedData }) {
 
   return (
     <Container>
@@ -52,11 +34,8 @@ function Main({ Container, productItem }) {
             />
           );
         })}
-
       </Article>
-
     </Container>
-
   );
 }
 
