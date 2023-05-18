@@ -50,7 +50,11 @@ function CardItem({ handleBookmarkToggle, isBookMark, productItem }) {
 
       <TextBox>
         <div className="left-area">
-          <strong>{productItem.type === "Brand" ? productItem.brand_name : productItem.title}</strong>
+          <strong>
+            {productItem.type !== "Brand" || productItem.brand_name}
+            {(productItem.type === "Product") || (productItem.type === "Exhibition") ? productItem.title : null}
+            {productItem.type !== "Category" || `#${productItem.title}`}
+          </strong>
           <span>{productItem.sub_title}</span>
         </div>
 
