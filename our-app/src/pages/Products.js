@@ -1,14 +1,9 @@
 import { Article } from "../styled/mainStyle"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 import TabList from "../component/TabList"
-
-import imgAll from "../img/filter-all.svg"
-import imgBrand from "../img/filter-brand.svg"
-import imgCategory from "../img/filter-category.svg"
-import imgExhibition from "../img/filter-exhibition.svg"
-import imgProduct from "../img/filter-product.svg"
 import styled from 'styled-components';
+import CardItem from "../component/CardItem"
 
 const TabListCont = styled.section`
 width: 100%;
@@ -18,33 +13,57 @@ width: 100%;
   margin: 24px 0;
 `
 
-function Products({ Container }) {
+function Products({ tabContArr, Container, productItem, handleBookmarkToggle, dataState, storedData }) {
   const [isTapmenu, setIsTapmenu] = useState(0)
-  const tabContArr = [
-    { name: "전체", type: "all", src: imgAll, content: "1" },
-    { name: "상품", type: "brand", src: imgBrand, content: "2" },
-    { name: "카테고리", type: "category", src: imgCategory, content: "3" },
-    { name: "기획전", type: "exhibition", src: imgExhibition, content: "4" },
-    { name: "브랜드", type: "product", src: imgProduct, content: "5" },
-  ];
+  const [isFilterType, setIsFilterItem] = useState('')
+  const [filterItem, setFilterItem] = useState(productItem)
 
-  const handleFilter = (idx) => {
-    setIsTapmenu(idx)
-    console.log(idx)
-  }
+  const handleFilter = (idx, type) => {
+    setIsTapmenu(idx);
+    setIsFilterItem(type);
+  };
+
+  useEffect(() => {
+    if (filterItem.length === 0) {
+      setFilterItem(productItem)
+    }
+    let filteredItem = productItem.filter((el) => tabContArr[isTapmenu].type === el.type);
+    setFilterItem([...filteredItem]);
+  }, [isTapmenu]);
 
   return (
     <Container>
       <TabListCont>
         {tabContArr.map((el, idx) => (
-          <TabList key={idx} id={idx} tabContArr={el} isTapmenu={isTapmenu} handleFilter={handleFilter} />
+          <TabList key={idx} id={idx} type={el.type} tabContArr={el} isTapmenu={isTapmenu} handleFilter={handleFilter} />
         ))}
       </TabListCont>
 
-      <div>
-        {tabContArr[isTapmenu].content}
-      </div>
-
+      <Article>
+        {
+          isTapmenu !== 0
+            ? filterItem.map((el) => (
+              <CardItem
+                key={el.id}
+                productItem={el}
+                handleBookmarkToggle={() => { handleBookmarkToggle(el) }}
+                isBookMark={storedData.some(item => item.id === el.id)}
+                dataState={dataState}
+              />
+            ))
+            : productItem.map((el) => {
+              return (
+                <CardItem
+                  key={el.id}
+                  productItem={el}
+                  handleBookmarkToggle={() => { handleBookmarkToggle(el) }}
+                  isBookMark={storedData.some(item => item.id === el.id)}
+                  dataState={dataState}
+                />
+              );
+            })
+        }
+      </Article>
     </Container>
   )
 }

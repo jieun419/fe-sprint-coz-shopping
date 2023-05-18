@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 function TabList({ tabContArr, handleFilter, id }) {
   return (
-      <TabBtn onClick={() => handleFilter(id)}>
+      <TabBtn onClick={() => handleFilter(id, tabContArr.type)}>
         <Imgbox src={tabContArr.src} />
         {tabContArr.name}
       </TabBtn>

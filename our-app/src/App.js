@@ -2,6 +2,7 @@ import './App.css';
 import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react"
 import { Container } from "./styled/commonStyle"
+import { tabContArr } from "./data/filterData"
 
 import Header from './component/Header';
 import Footer from './component/Footer';
@@ -10,12 +11,14 @@ import Bookmark from "./pages/Bookmark";
 import Main from "./pages/Main";
 import pruductData from "./api/pruductData"
 
+
 function App() {
   const [productItem, setProductItem] = useState([])
   const [isBookMark, setIsBookMark] = useState(false)
   const [dataState, setDataState] = useState([])
-  
+
   const BOOKMARK = "BOOKMARK"
+
 
   const storedData = JSON.parse(localStorage.getItem(BOOKMARK));
 
@@ -63,6 +66,7 @@ function App() {
               isBookMark={isBookMark}
               dataState={dataState}
               storedData={storedData}
+              tabContArr={tabContArr}
             />} />
         <Route
           path="/Bookmark"
@@ -74,6 +78,7 @@ function App() {
               isBookMark={isBookMark}
               dataState={dataState}
               storedData={storedData}
+              tabContArr={tabContArr}
             />} />
       </Routes>
       <Footer />
