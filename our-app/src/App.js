@@ -16,8 +16,24 @@ function App() {
   const [productItem, setProductItem] = useState([])
   const [isBookMark, setIsBookMark] = useState(false)
   const [dataState, setDataState] = useState([])
+  const [isTapmenu, setIsTapmenu] = useState(0)
+  const [isFilterType, setIsFilterItem] = useState('')
+  const [filterItem, setFilterItem] = useState(productItem)
 
   const BOOKMARK = "BOOKMARK"
+
+  const handleFilter = (idx, type) => {
+    setIsTapmenu(idx);
+    setIsFilterItem(type);
+  };
+
+  useEffect(() => {
+    if (filterItem.length === 0) {
+      setFilterItem(productItem)
+    }
+    let filteredItem = productItem.filter((el) => tabContArr[isTapmenu].type === el.type);
+    setFilterItem([...filteredItem]);
+  }, [isTapmenu]);
 
 
   const storedData = JSON.parse(localStorage.getItem(BOOKMARK));
@@ -67,6 +83,9 @@ function App() {
               dataState={dataState}
               storedData={storedData}
               tabContArr={tabContArr}
+              handleFilter={handleFilter}
+              filterItem={filterItem}
+              isTapmenu={isTapmenu}
             />} />
         <Route
           path="/Bookmark"
@@ -79,6 +98,9 @@ function App() {
               dataState={dataState}
               storedData={storedData}
               tabContArr={tabContArr}
+              handleFilter={handleFilter}
+              filterItem={filterItem}
+              isTapmenu={isTapmenu}
             />} />
       </Routes>
       <Footer />

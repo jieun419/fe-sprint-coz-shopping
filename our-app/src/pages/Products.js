@@ -1,36 +1,11 @@
 import { Article } from "../styled/mainStyle"
-import { useState, useEffect } from "react"
-
 import TabList from "../component/TabList"
-import styled from 'styled-components';
 import CardItem from "../component/CardItem"
+import { TabListCont } from "../styled/filterTablistStyle"
 
-const TabListCont = styled.section`
-width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 24px 0;
-`
 
-function Products({ tabContArr, Container, productItem, handleBookmarkToggle, dataState, storedData }) {
-  const [isTapmenu, setIsTapmenu] = useState(0)
-  const [isFilterType, setIsFilterItem] = useState('')
-  const [filterItem, setFilterItem] = useState(productItem)
-
-  const handleFilter = (idx, type) => {
-    setIsTapmenu(idx);
-    setIsFilterItem(type);
-  };
-
-  useEffect(() => {
-    if (filterItem.length === 0) {
-      setFilterItem(productItem)
-    }
-    let filteredItem = productItem.filter((el) => tabContArr[isTapmenu].type === el.type);
-    setFilterItem([...filteredItem]);
-  }, [isTapmenu]);
-
+function Products({ handleFilter, filterItem, isTapmenu, tabContArr, Container, productItem, handleBookmarkToggle, dataState, storedData }) {
+ 
   return (
     <Container>
       <TabListCont>
