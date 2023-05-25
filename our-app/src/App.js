@@ -19,16 +19,19 @@ function App() {
   const [isTapmenu, setIsTapmenu] = useState(0)
   const [isFilterType, setIsFilterItem] = useState('')
   const [filterItem, setFilterItem] = useState(productItem)
-  const [filterStoredItem, setFilterStoredItem] = useState()
+  const [filterStoredItem, setFilterStoredItem] = useState([])
 
   const BOOKMARK = "BOOKMARK"
   const storedData = JSON.parse(localStorage.getItem(BOOKMARK));
-  
+
+  if (storedData === null) {
+    localStorage.setItem(BOOKMARK, JSON.stringify([]))
+  }
+
   const handleFilter = (idx, type) => {
     setIsTapmenu(idx);
     setIsFilterItem(type);
   };
-
 
   const handleBookmarkToggle = (item) => {
     if (dataState.includes(item) || storedData.includes(item)) {
@@ -43,11 +46,12 @@ function App() {
 
 
   useEffect(() => {
-    if (filterItem.length === 0) {
+    if (filterItem?.length === 0) {
       setFilterItem(productItem)
-    } else if (storedData.length === 0) {
+    } else if (storedData?.length === 0) {
       setFilterStoredItem(storedData)
     }
+
     let filteredItem = productItem.filter((el) => tabContArr[isTapmenu].type === el.type);
     let filterStoredItem = storedData.filter((el) => tabContArr[isTapmenu].type === el.type);
     setFilterItem([...filteredItem]);
