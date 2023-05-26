@@ -1,7 +1,9 @@
+import { useState } from "react"
 import Modal from "./Modal";
 import BookMarkBtn from "./BookmarkBtn"
-import { useState } from "react"
+import { numComma } from "../common/utils";
 import { Section, BookMarkContain, TextBox } from "../styled/cardItemStyle";
+
 
 function CardItem({ handleBookmarkToggle, isBookMark, productItem }) {
   const [isModal, setIsModal] = useState(false)
@@ -9,20 +11,6 @@ function CardItem({ handleBookmarkToggle, isBookMark, productItem }) {
   const showModal = () => {
     setIsModal(!isModal)
   }
-
-  const numComma = (num) => {
-    const str = String(num);
-    let result = '';
-
-    if (str === 'null') return null;
-
-    for (let i = 0; i < str.length; i++) {
-      if (i !== 0 && i % 3 === 0) result = `,${result}`;
-      result = str[str.length - i - 1] + result;
-    }
-    return result;
-  }
-
 
   return (
     <Section key={productItem.id} id={productItem.id}>

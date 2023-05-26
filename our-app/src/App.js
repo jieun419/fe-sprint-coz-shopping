@@ -10,7 +10,7 @@ import Products from "./pages/Products";
 import Bookmark from "./pages/Bookmark";
 import Main from "./pages/Main";
 import pruductData from "./api/pruductData"
-
+import { BOOKMARK } from './common/utils';
 
 function App() {
   const [productItem, setProductItem] = useState([])
@@ -21,7 +21,6 @@ function App() {
   const [filterItem, setFilterItem] = useState(productItem)
   const [filterStoredItem, setFilterStoredItem] = useState([])
 
-  const BOOKMARK = "BOOKMARK"
   const storedData = JSON.parse(localStorage.getItem(BOOKMARK));
 
   if (storedData === null) {
